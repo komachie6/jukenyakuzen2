@@ -165,11 +165,18 @@ p:last-child{margin-bottom:0;}
 }
 .btn small{display:block;font-size:11px;font-weight:400;letter-spacing:.14em;color:#E9DFC4;margin-bottom:2px;}
 .cta-note{
-  margin-top:16px;
-  display:inline-flex;align-items:center;gap:7px;
+  margin:16px auto 0;
+  max-width:360px;
   font-size:12px;color:var(--ink-soft);letter-spacing:.04em;
+  line-height:1.85;
 }
-.cta-note svg{width:15px;height:15px;flex-shrink:0;}
+.cta-note svg{
+  width:15px;height:15px;
+  display:inline-block;vertical-align:-2px;margin:0 5px 0 3px;
+}
+.cta-note-more{
+  color:#A67F42;font-weight:600;letter-spacing:.1em;
+}
 
 /* ===== お悩み ===== */
 .worries{
@@ -190,6 +197,7 @@ p:last-child{margin-bottom:0;}
   box-shadow:0 2px 8px rgba(58,42,30,.05);
 }
 .check-list li svg{width:21px;height:21px;flex-shrink:0;margin-top:4px;}
+.check-list li .chk-t{flex:1;}
 .worries-close{
   margin-top:30px;
   text-align:center;
@@ -354,7 +362,7 @@ p:last-child{margin-bottom:0;}
   margin-top:22px;
   text-align:center;
 }
-.gift-special span{
+.gift-special > span{
   display:inline-block;
   background:rgba(253,251,244,.14);
   border:1px solid rgba(240,231,203,.5);
@@ -382,12 +390,12 @@ p:last-child{margin-bottom:0;}
     var(--cream-deep);
 }
 .voice-photo{
-  width:190px;margin:30px auto 0;
-  border-radius:50% 50% 46% 46%;
+  width:210px;margin:30px auto 0;
+  border-radius:12px;               /* 他の写真と同じ角丸四角 */
   overflow:hidden;
-  border:4px solid #FDFBF4;
-  box-shadow:0 10px 26px rgba(58,42,30,.18);
+  box-shadow:0 8px 22px rgba(58,42,30,.16);
 }
+.voice-photo img{width:100%;}
 .voice-name{
   text-align:center;
   margin-top:18px;
@@ -493,6 +501,63 @@ footer{
 /* 追従CTAぶんの逃げ */
 .wrap{padding-bottom:0;}
 body.has-sticky .wrap{padding-bottom:0;}
+
+/* ===== 改行コントロール ===== */
+/* .nw = スマホ幅でのみ「この中では折り返さない」(語のまとまりを守る)
+   PC幅では無効なので、PCの改行は従来のまま変わりません */
+.nw{white-space:normal;}
+/* .br-sp = スマホだけ改行 / .br-pc = PCだけ改行 */
+.br-sp{display:none;}
+
+/* ===== スマホ最適化(iPhone SE 375px 〜 大画面スマホ) ===== */
+@media (max-width:449px){
+  .br-sp{display:inline;}
+  .br-pc{display:none;}
+  .nw{white-space:nowrap;}
+
+  body{font-size:14.5px;letter-spacing:.01em;}
+  section{padding:48px 18px;}
+  .cta{padding:34px 18px 38px;}
+
+  .sec-title{font-size:19px;letter-spacing:.03em;}
+  .sec-label{letter-spacing:.2em;}
+
+  .btn{font-size:16px;letter-spacing:.05em;padding:18px 34px 19px;}
+  .btn small{font-size:10.5px;letter-spacing:.1em;}
+  .cta-note{font-size:11.5px;letter-spacing:.02em;}
+  .cta-limited{font-size:12px;letter-spacing:.14em;}
+
+  .check-list li{font-size:13.5px;padding:14px 14px;gap:10px;}
+  .worries-close{font-size:14.5px;}
+
+  .about-quote{font-size:14px;padding:20px 16px;letter-spacing:0;}
+  .poem{font-size:14.5px;}
+  .about-ask{font-size:15px;}
+
+  .program-card{padding:22px 16px;}
+  .program-card h3{font-size:15px;letter-spacing:0;}
+  .program-card p{font-size:13.5px;}
+
+  .gift .sec-title{font-size:18px;}
+  .gift-sub{font-size:13px;}
+  .gift-close{font-size:13px;}
+  .gift-caution{font-size:11px;}
+  .gift-special > span{font-size:13px;padding:12px 14px;}
+  .type-card{padding:20px 16px;}
+  .type-card li{font-size:13.5px;}
+
+  .easy .poem{font-size:14px;}
+
+  .voice-letter{padding:26px 17px;font-size:13.5px;}
+  .credentials{padding:22px 16px;font-size:12px;}
+
+  .cta-final .fv-echo{font-size:15.5px;}
+}
+
+/* 375px未満の狭い画面では、はみ出し防止のため折り返し禁止を解除 */
+@media (max-width:374px){
+  .nw{white-space:normal !important;}
+}
 </style>
 </head>
 <body>
@@ -511,10 +576,6 @@ body.has-sticky .wrap{padding-bottom:0;}
       <small>受験薬膳 無料ウェビナー</small>
       無料で見てみる
     </a>
-    <p class="cta-note">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#C0995B" stroke-width="1.8"><rect x="3" y="8" width="18" height="4"/><rect x="5" y="12" height="9" width="14"/><path d="M12 8v13M12 8c-2.5 0-4.5-1.2-4.5-3S9.5 2.6 12 8zm0 0c2.5 0 4.5-1.2 4.5-3S14.5 2.6 12 8z"/></svg>
-      個別相談参加で「親子のかんたん薬膳タイプチェック」プレゼント
-    </p>
   </div>
 
   <!-- ===== お悩み ===== -->
@@ -524,12 +585,12 @@ body.has-sticky .wrap{padding-bottom:0;}
     <div class="sec-title-underline"></div>
 
     <ul class="check-list">
-      <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#EFF2E6"/><path d="M7 12.5l3.2 3.2L17 8.6" stroke="#4A6341" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>子供の顔色が悪くても、何を作ってあげればいいかわからない</li>
-      <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#EFF2E6"/><path d="M7 12.5l3.2 3.2L17 8.6" stroke="#4A6341" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>「勉強に集中しなさい」と言うことしかできず、無力感を感じている</li>
-      <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#EFF2E6"/><path d="M7 12.5l3.2 3.2L17 8.6" stroke="#4A6341" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>受験期のイライラ・反抗期で、家の中の空気がピリピリしている</li>
-      <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#EFF2E6"/><path d="M7 12.5l3.2 3.2L17 8.6" stroke="#4A6341" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>塾や模試のことは口出しできないから、せめて食事だけは支えたい</li>
-      <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#EFF2E6"/><path d="M7 12.5l3.2 3.2L17 8.6" stroke="#4A6341" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>本番当日に体調を崩さないか、ずっと不安</li>
-      <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#EFF2E6"/><path d="M7 12.5l3.2 3.2L17 8.6" stroke="#4A6341" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>頑張っている姿を見ると、何かしてあげたいのに、時間も知識もない</li>
+      <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#EFF2E6"/><path d="M7 12.5l3.2 3.2L17 8.6" stroke="#4A6341" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="chk-t">子供の顔色が悪くても、<span class="nw">何を作ってあげればいいか</span>わからない</span></li>
+      <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#EFF2E6"/><path d="M7 12.5l3.2 3.2L17 8.6" stroke="#4A6341" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="chk-t"><span class="nw">「勉強に集中しなさい」</span><span class="nw">と言うことしかできず、</span><span class="nw">無力感を感じている</span></span></li>
+      <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#EFF2E6"/><path d="M7 12.5l3.2 3.2L17 8.6" stroke="#4A6341" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="chk-t">受験期のイライラ・反抗期で、<span class="nw">家の中の空気が</span><span class="nw">ピリピリしている</span></span></li>
+      <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#EFF2E6"/><path d="M7 12.5l3.2 3.2L17 8.6" stroke="#4A6341" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="chk-t"><span class="nw">塾や模試のことは口出しできないから、</span><span class="nw">せめて食事だけは支えたい</span></span></li>
+      <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#EFF2E6"/><path d="M7 12.5l3.2 3.2L17 8.6" stroke="#4A6341" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="chk-t">本番当日に体調を崩さないか、<span class="nw">ずっと不安</span></span></li>
+      <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#EFF2E6"/><path d="M7 12.5l3.2 3.2L17 8.6" stroke="#4A6341" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="chk-t">頑張っている姿を見ると、<span class="nw">何かしてあげたいのに、</span><span class="nw">時間も知識もない</span></span></li>
     </ul>
 
     <p class="worries-close">もしひとつでも当てはまったなら、<br><strong>このセミナーはきっとお役に立てます。</strong></p>
@@ -543,16 +604,16 @@ body.has-sticky .wrap{padding-bottom:0;}
     <h2 class="sec-title">「受験薬膳」とは、<br>子供の"今の状態"に合わせて<br>整える食事のことです。</h2>
     <div class="sec-title-underline"></div>
 
-    <div class="about-quote">受験薬膳とは、お子様の顔色・食欲・眠り・感情・疲れ方を見ながら、<br><span class="em">"今日のこの子に合うごはん"</span>を選ぶ養生ごはんです。</div>
+    <div class="about-quote">受験薬膳とは、<span class="nw">お子様の顔色・食欲・眠り・</span><span class="nw">感情・疲れ方を見ながら、</span><br><span class="em nw">"今日のこの子に合うごはん"を選ぶ</span><span class="nw">養生ごはんです。</span></div>
 
     <div class="lead">
       <p class="poem">受験期のお子様は、<br>朝ごはんが入らなかったり、<br>甘いものばかり欲しがったり、<br>緊張でお腹が痛くなったり、<br>模試の結果に落ち込んだり、<br>イライラして親子げんかになったり、<br>夜なかなか寝つけなかったり――</p>
 
       <p class="about-ask">そんな様子、ありませんか?</p>
 
-      <p>でも受験薬膳では<span class="em">「顔望診(かおぼうしん)」</span>といって、<br>顔を見るだけでお子様の体調・感情・バランスの崩れを知ることができます。</p>
+      <p>でも受験薬膳では<br class="br-sp"><span class="em nw">「顔望診(かおぼうしん)」</span>といって、<br>顔を見るだけで<span class="nw">お子様の体調・感情・バランスの</span><span class="nw">崩れを知ることができます。</span></p>
 
-      <p>バランスの崩れた部分を戻す食材を割り出して、<br>毎日のごはんに追加するだけで、<br><span class="em">お子様の体と心の状態が安定して、<br>受験に集中しやすくなるんです。</span></p>
+      <p><span class="nw">バランスの崩れた部分を戻す食材を</span><span class="nw">割り出して、</span><br>毎日のごはんに追加するだけで、<br><span class="em">お子様の体と心の状態が安定して、<br>受験に集中しやすくなるんです。</span></p>
     </div>
 
     <figure class="book-fig">
@@ -569,8 +630,7 @@ body.has-sticky .wrap{padding-bottom:0;}
       無料で見てみる
     </a>
     <p class="cta-note">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#C0995B" stroke-width="1.8"><rect x="3" y="8" width="18" height="4"/><rect x="5" y="12" height="9" width="14"/><path d="M12 8v13M12 8c-2.5 0-4.5-1.2-4.5-3S9.5 2.6 12 8zm0 0c2.5 0 4.5-1.2 4.5-3S14.5 2.6 12 8z"/></svg>
-      個別相談参加で「親子のかんたん薬膳タイプチェック」プレゼント
+      <span class="cta-note-more">さらに！</span><svg viewBox="0 0 24 24" fill="none" stroke="#C0995B" stroke-width="1.8"><rect x="3" y="8" width="18" height="4"/><rect x="5" y="12" height="9" width="14"/><path d="M12 8v13M12 8c-2.5 0-4.5-1.2-4.5-3S9.5 2.6 12 8zm0 0c2.5 0 4.5-1.2 4.5-3S14.5 2.6 12 8z"/></svg>個別相談参加で<br><span class="nw">「親子のかんたん薬膳タイプチェック」</span>プレゼント
     </p>
   </div>
 
@@ -581,24 +641,24 @@ body.has-sticky .wrap{padding-bottom:0;}
     <div class="sec-title-underline"></div>
 
     <div class="program-card">
-      <h3>① 「気合い不足」ではなかった。受験期の不調のサイン</h3>
-      <p>朝ごはんが入らない、イライラする、甘いものばかり欲しがる――それは根性不足ではなく、心と体からのサインだということがわかります。</p>
+      <h3>① <span class="nw">「気合い不足」ではなかった。</span><span class="nw">受験期の不調のサイン</span></h3>
+      <p><span class="nw">朝ごはんが入らない、</span><span class="nw">イライラする、</span><span class="nw">甘いものばかり欲しがる――</span><span class="nw">それは根性不足ではなく、</span><span class="nw">心と体からのサインだということが</span><span class="nw">わかります。</span></p>
     </div>
     <div class="program-card">
-      <h3>② たった1分でできる「唇チェック」で、今日のわが子の状態がわかる</h3>
-      <p>白っぽい・赤みが強い・紫っぽい・乾いている。唇の様子から、その日その子に必要なごはんの方向性が見えるワークをお伝えします。</p>
+      <h3>② <span class="nw">たった1分でできる「唇チェック」で、</span><span class="nw">今日のわが子の状態がわかる</span></h3>
+      <p><span class="nw">白っぽい・赤みが強い・</span><span class="nw">紫っぽい・乾いている。</span><span class="nw">唇の様子から、</span><span class="nw">その日その子に必要な</span><span class="nw">ごはんの方向性が見える</span><span class="nw">ワークをお伝えします。</span></p>
     </div>
     <div class="program-card">
-      <h3>③ 「今日は何を作ればいいか」が、毎日パッと選べるようになる</h3>
-      <p>固定レシピを覚えるのではなく、"その日の状態"に合わせて食材を選ぶ力が身につきます。忙しい日でも、いつもの食材で大丈夫です。</p>
+      <h3>③ <span class="nw">「今日は何を作ればいいか」が、</span><span class="nw">毎日パッと選べるようになる</span></h3>
+      <p><span class="nw">固定レシピを</span><span class="nw">覚えるのではなく、"その日の状態"に</span><span class="nw">合わせて食材を選ぶ力が</span><span class="nw">身につきます。</span><span class="nw">忙しい日でも、</span><span class="nw">いつもの食材で大丈夫です。</span></p>
     </div>
     <div class="program-card">
-      <h3>④ 子どもだけでなく、ママ自身が整う理由</h3>
-      <p>受験期に揺れているのは子どもだけではありません。お母さんが整うと、家庭の空気がどう変わるのかがわかります。</p>
+      <h3>④ <span class="nw">子どもだけでなく、</span><span class="nw">ママ自身が整う理由</span></h3>
+      <p><span class="nw">受験期に揺れているのは</span><span class="nw">子どもだけではありません。</span><span class="nw">お母さんが整うと、</span><span class="nw">家庭の空気がどう変わるのかが</span><span class="nw">わかります。</span></p>
     </div>
     <div class="program-card">
-      <h3>⑤ 塾前・帰宅後・模試のあと。シーン別の"ちょうどいいごはん"</h3>
-      <p>緊張して食べられない時、疲れて帰ってきた時、結果に落ち込んだ時――それぞれの場面でどう食卓を整えればいいかがわかります。</p>
+      <h3>⑤ <span class="nw">塾前・帰宅後・模試のあと。</span><span class="nw">シーン別の"ちょうどいいごはん"</span></h3>
+      <p><span class="nw">緊張して食べられない時、</span><span class="nw">疲れて帰ってきた時、</span><span class="nw">結果に落ち込んだ時――</span><span class="nw">それぞれの場面で</span><span class="nw">どう食卓を整えればいいかが</span><span class="nw">わかります。</span></p>
     </div>
   </section>
 
@@ -612,7 +672,7 @@ body.has-sticky .wrap{padding-bottom:0;}
       <img src="assets/typecheck.jpg" alt="個別相談会後プレゼント 受験期の親子を支える 今日のごはん見立てチャート">
     </div>
 
-    <p class="gift-sub">ウェビナーでお伝えする「唇チェック」をさらに詳しく、<br>お子様とお母様、おふたりの状態が一枚でわかる<br>薬膳タイプチェックをプレゼント</p>
+    <p class="gift-sub">ウェビナーでお伝えする<span class="nw">「唇チェック」を</span><span class="nw">さらに詳しく、</span><br><span class="nw">お子様とお母様、</span><span class="nw">おふたりの状態が一枚でわかる</span><br><span class="nw">薬膳タイプチェックをプレゼント</span></p>
 
     <div class="type-card">
       <h3>お子様のタイプ</h3>
@@ -635,11 +695,11 @@ body.has-sticky .wrap{padding-bottom:0;}
       </ul>
     </div>
 
-    <p class="gift-close">顔色・唇・食欲・眠り・感情から、<br>今のご家庭に必要なごはんの方向性が見えてきます。</p>
+    <p class="gift-close"><span class="nw">顔色・唇・食欲・眠り・感情から、</span><br>今のご家庭に必要な<span class="nw">ごはんの方向性が見えてきます。</span></p>
 
-    <p class="gift-caution">※これは病気を診断するものではなく、<br>"今日はここをいたわるとよさそう"を知るための目安としてお使いいただけます。</p>
+    <p class="gift-caution"><span class="nw">※これは病気を診断するものではなく、</span><br><span class="nw">"今日はここをいたわるとよさそう"</span>を知るための<br class="br-sp"><span class="nw">目安としてお使いいただけます。</span></p>
 
-    <p class="gift-special"><span>書籍には掲載されない、<br>ウェビナー参加者だけの特別版です。</span></p>
+    <p class="gift-special"><span><span class="nw">書籍には掲載されない、</span><br><span class="nw">ウェビナー参加者だけの特別版です。</span></span></p>
   </section>
 
   <!-- ===== CTA 3 ===== -->
@@ -650,8 +710,7 @@ body.has-sticky .wrap{padding-bottom:0;}
       無料で見てみる
     </a>
     <p class="cta-note">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#C0995B" stroke-width="1.8"><rect x="3" y="8" width="18" height="4"/><rect x="5" y="12" height="9" width="14"/><path d="M12 8v13M12 8c-2.5 0-4.5-1.2-4.5-3S9.5 2.6 12 8zm0 0c2.5 0 4.5-1.2 4.5-3S14.5 2.6 12 8z"/></svg>
-      個別相談参加で「親子のかんたん薬膳タイプチェック」プレゼント
+      <span class="cta-note-more">さらに！</span><svg viewBox="0 0 24 24" fill="none" stroke="#C0995B" stroke-width="1.8"><rect x="3" y="8" width="18" height="4"/><rect x="5" y="12" height="9" width="14"/><path d="M12 8v13M12 8c-2.5 0-4.5-1.2-4.5-3S9.5 2.6 12 8zm0 0c2.5 0 4.5-1.2 4.5-3S14.5 2.6 12 8z"/></svg>個別相談参加で<br><span class="nw">「親子のかんたん薬膳タイプチェック」</span>プレゼント
     </p>
   </div>
 
@@ -664,13 +723,13 @@ body.has-sticky .wrap{padding-bottom:0;}
     <div class="sec-title-underline"></div>
 
     <div class="lead">
-      <p class="poem">薬膳と聞くと、<br>「難しそう」<br>「特別な生薬や苦い漢方を子供に食べさせるの?」<br>と思いがちですが、受験薬膳は違います。</p>
+      <p class="poem">薬膳と聞くと、<br>「難しそう」<br><span class="nw">「特別な生薬や苦い漢方を</span><span class="nw">子供に食べさせるの?」</span><br>と思いがちですが、受験薬膳は違います。</p>
 
-      <p>お子様の顔を見て<br>今、お子様の心と体のバランスをとるために<br>必要な食材をわりだしたら、<br><span class="em">あとは普段の料理に入れるだけ。</span></p>
+      <p>お子様の顔を見て<br>今、<span class="nw">お子様の心と体のバランスを</span><span class="nw">とるために</span><br>必要な食材をわりだしたら、<br><span class="em">あとは普段の料理に入れるだけ。</span></p>
 
       <p class="poem"><span class="em">お味噌汁の具を変える。<br>おにぎりの中身を変える。<br>いつもの卵焼きに、ひとつまみ加える。</span></p>
 
-      <p>お子様が「おいしい」と喜んで食べてくれる、<br>いつものごはんのままでOKなので<br>毎日おいしく続けることができますよ。</p>
+      <p><span class="nw">お子様が「おいしい」と</span><span class="nw">喜んで食べてくれる、</span><br>いつものごはんのままでOKなので<br>毎日おいしく続けることができますよ。</p>
     </div>
 
     <div class="easy-photos">
@@ -694,42 +753,42 @@ body.has-sticky .wrap{padding-bottom:0;}
     </div>
 
     <div class="voice-letter">
-      <p>はじめまして。国際薬膳師の増子友紀子です。<br>料理人歴20年。フランス料理店で10年修行した後、東京・自由が丘で「リストランテ ヴィコレット」のオーナーシェフを務めてきました。</p>
+      <p><span class="nw">はじめまして。</span><span class="nw">国際薬膳師の増子友紀子です。</span><br><span class="nw">料理人歴20年。</span><span class="nw">フランス料理店で10年修行した後、</span><span class="nw">東京・自由が丘で</span><span class="nw">「リストランテ ヴィコレット」の</span><span class="nw">オーナーシェフを務めてきました。</span></p>
 
-      <p>結婚・出産を機に「毎日のごはんで体をケアする」大切さを実感し、2016年より国際薬膳師として活動を開始。実践しながら薬膳を学べる「まいにち薬膳&reg;」講座は、受講者数のべ6,500人を超え、Instagramでは131,000人以上の方に薬膳のヒントをお届けしています。著書は4冊、『女性セブン』『Hanakoママ』など、メディアでも多数取り上げていただきました。</p>
+      <p><span class="nw">結婚・出産を機に</span><span class="nw">「毎日のごはんで体をケアする」</span><span class="nw">大切さを実感し、</span><span class="nw">2016年より国際薬膳師として</span><span class="nw">活動を開始。</span><span class="nw">実践しながら薬膳を学べる</span>「まいにち薬膳&reg;」講座は、<span class="nw">受講者数のべ6,500人を超え、</span><span class="nw">Instagramでは</span><span class="nw">131,000人以上の方に</span><span class="nw">薬膳のヒントをお届けしています。</span><span class="nw">著書は4冊、</span>『女性セブン』『Hanakoママ』など、<span class="nw">メディアでも</span><span class="nw">多数取り上げていただきました。</span></p>
 
-      <p>そんな私が今回、「受験薬膳」というテーマをまとめたのには理由があります。<br><span class="letter-em">それは、私自身の息子が、今年まさに受験生だからです。</span></p>
+      <p><span class="nw">そんな私が今回、</span><span class="nw">「受験薬膳」というテーマを</span><span class="nw">まとめたのには理由があります。</span><br><span class="letter-em">それは、<span class="nw">私自身の息子が、</span><span class="nw">今年まさに受験生だからです。</span></span></p>
 
-      <p>正直に言うと、薬膳を長年伝えてきた私でも、"受験生の母"になって初めてわかることばかりでした。<br>朝ごはんが入らない。塾の前に何を出せばいいかわからない。模試の結果でイライラして、親子げんかになる。夜、なかなか寝つけない我が子を見て、不安になる。</p>
+      <p><span class="nw">正直に言うと、</span><span class="nw">薬膳を長年伝えてきた</span><span class="nw">私でも、"受験生の母"に</span><span class="nw">なって</span><span class="nw">初めてわかることばかりでした。</span><br><span class="nw">朝ごはんが入らない。</span><span class="nw">塾の前に何を出せばいいか</span><span class="nw">わからない。</span><span class="nw">模試の結果でイライラして、</span><span class="nw">親子げんかになる。</span><span class="nw">夜、なかなか寝つけない</span><span class="nw">我が子を見て、不安になる。</span></p>
 
-      <p>勉強は、代わってあげられません。試験を受けるのも、結果と向き合うのも、最後は子ども自身です。<br>だからこそ、痛感しました。親としてできることが、こんなにも少ないのか、と。</p>
+      <p><span class="nw">勉強は、代わってあげられません。</span><span class="nw">試験を受けるのも、</span><span class="nw">結果と向き合うのも、</span><span class="nw">最後は子ども自身です。</span><br><span class="nw">だからこそ、痛感しました。</span><span class="nw">親としてできることが、</span><span class="nw">こんなにも少ないのか、と。</span></p>
 
-      <p>でも、薬膳を実践してきた私だからこそ気づけたことがあります。<br><span class="letter-em">それは、毎日の食事なら、私にもできるということです。</span></p>
+      <p><span class="nw">でも、薬膳を実践してきた</span><span class="nw">私だからこそ</span><span class="nw">気づけたことがあります。</span><br><span class="letter-em"><span class="nw">それは、毎日の食事なら、</span><span class="nw">私にもできるということです。</span></span></p>
 
-      <p>子どもの顔色を見て、今日必要な一皿を選ぶ。それだけで、体の調子が整い、気持ちが少し落ち着き、家の中の空気まで変わっていく。実際に、私自身が息子と過ごす日々の中で、それを何度も実感してきました。</p>
+      <p><span class="nw">子どもの顔色を見て、</span><span class="nw">今日必要な一皿を選ぶ。</span><span class="nw">それだけで、</span><span class="nw">体の調子が整い、</span><span class="nw">気持ちが少し落ち着き、</span><span class="nw">家の中の空気まで変わっていく。</span><span class="nw">実際に、</span><span class="nw">私自身が息子と過ごす日々の中で、</span><span class="nw">それを何度も実感してきました。</span></p>
 
-      <p><span class="letter-em">勉強は代わってあげられなくても、食卓からなら、わが子を支えられる。</span><br>その実感を、できるだけ多くの受験生のお母さんに届けたくて、この「受験薬膳」というテーマにたどり着きました。</p>
+      <p><span class="letter-em"><span class="nw">勉強は代わってあげられなくても、</span><span class="nw">食卓からなら、わが子を支えられる。</span></span><br><span class="nw">その実感を、</span><span class="nw">できるだけ多くの</span><span class="nw">受験生のお母さんに届けたくて、</span><span class="nw">この「受験薬膳」という</span><span class="nw">テーマにたどり着きました。</span></p>
 
-      <p>薬膳と聞くと、難しそうに感じるかもしれません。でも大丈夫です。特別な食材も、難しい理論も必要ありません。今日からできることを、このウェビナーでお伝えします。</p>
+      <p><span class="nw">薬膳と聞くと、</span><span class="nw">難しそうに感じるかもしれません。</span><span class="nw">でも大丈夫です。</span><span class="nw">特別な食材も、</span><span class="nw">難しい理論も必要ありません。</span><span class="nw">今日からできることを、</span><span class="nw">このウェビナーでお伝えします。</span></p>
     </div>
 
     <div class="credentials">
       <h3>著書</h3>
       <ul>
-        <li>『身近な食材でからだが喜ぶ、野菜レシピ』エムディエヌコーポレーション</li>
-        <li>『心とからだを整える 春夏秋冬薬膳レシピ』 マイナビ出版</li>
-        <li>『二十四節気を楽しむ薬膳パスタ』エムディエヌコーポレーション</li>
-        <li>『心とからだを整える 薬膳カフェごはん』 マイナビ出版</li>
+        <li><span class="nw">『身近な食材でからだが喜ぶ、野菜レシピ』</span><span class="nw">エムディエヌコーポレーション</span></li>
+        <li><span class="nw">『心とからだを整える 春夏秋冬薬膳レシピ』</span> <span class="nw">マイナビ出版</span></li>
+        <li><span class="nw">『二十四節気を楽しむ薬膳パスタ』</span><span class="nw">エムディエヌコーポレーション</span></li>
+        <li><span class="nw">『心とからだを整える 薬膳カフェごはん』</span> <span class="nw">マイナビ出版</span></li>
       </ul>
       <h3>メディア出演・掲載</h3>
       <ul>
-        <li>小学館『女性セブン』2023年8月31日号/2023年4月28日号/2025年7月3・10日号</li>
+        <li><span class="nw">小学館『女性セブン』</span><span class="nw">2023年8月31日号/</span><span class="nw">2023年4月28日号/</span><span class="nw">2025年7月3・10日号</span></li>
         <li>マガジンハウス『Hanakoママ』</li>
         <li>カナエル『くらしの窓口』</li>
         <li>関西電力 『withはびe』</li>
         <li>他レシピ掲載・監修多数</li>
-        <li>ラジオNIKKEI「前田公輝のヒラケテヒラク」ゲスト出演</li>
-        <li>「SALON AWARD」ゲストスピーカー</li>
+        <li><span class="nw">ラジオNIKKEI</span><span class="nw">「前田公輝のヒラケテヒラク」</span><span class="nw">ゲスト出演</span></li>
+        <li><span class="nw">「SALON AWARD」</span><span class="nw">ゲストスピーカー</span></li>
       </ul>
       <h3>企業コラボ</h3>
       <ul>
@@ -741,15 +800,14 @@ body.has-sticky .wrap{padding-bottom:0;}
 
   <!-- ===== 最終CTA ===== -->
   <div class="cta cta-final fx">
-    <p class="fv-echo">勉強は代われない。<br>でも、毎日の<span class="gold">ごはんで支えられる。</span></p>
+    <p class="fv-echo">勉強は代われない。<br>でも、毎日の<span class="gold nw">ごはんで支えられる。</span></p>
     <p class="cta-limited">期間限定公開</p>
     <a class="btn" href="#" target="_blank" rel="noopener">
       <small>受験薬膳 無料ウェビナー</small>
       無料で見てみる
     </a>
     <p class="cta-note">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#C0995B" stroke-width="1.8"><rect x="3" y="8" width="18" height="4"/><rect x="5" y="12" height="9" width="14"/><path d="M12 8v13M12 8c-2.5 0-4.5-1.2-4.5-3S9.5 2.6 12 8zm0 0c2.5 0 4.5-1.2 4.5-3S14.5 2.6 12 8z"/></svg>
-      個別相談参加で「親子のかんたん薬膳タイプチェック」プレゼント
+      <span class="cta-note-more">さらに！</span><svg viewBox="0 0 24 24" fill="none" stroke="#C0995B" stroke-width="1.8"><rect x="3" y="8" width="18" height="4"/><rect x="5" y="12" height="9" width="14"/><path d="M12 8v13M12 8c-2.5 0-4.5-1.2-4.5-3S9.5 2.6 12 8zm0 0c2.5 0 4.5-1.2 4.5-3S14.5 2.6 12 8z"/></svg>個別相談参加で<br><span class="nw">「親子のかんたん薬膳タイプチェック」</span>プレゼント
     </p>
   </div>
 
