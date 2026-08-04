@@ -87,7 +87,7 @@ p:last-child{margin-bottom:0;}
 
 /* 飾り小枝 */
 .sprig{display:flex;justify-content:center;padding:0 0 0;}
-.sprig svg{width:56px;height:22px;opacity:.85;}
+.sprig svg{width:158px;height:auto;opacity:.95;}
 
 /* スクロールフェードイン */
 .fx{opacity:0;transform:translateY(18px);transition:opacity .8s ease, transform .8s ease;}
@@ -112,8 +112,8 @@ p:last-child{margin-bottom:0;}
 }
 .cta-limited{
   display:inline-flex;align-items:center;gap:10px;
-  font-size:12.5px;letter-spacing:.18em;color:var(--green);
-  margin-bottom:14px;font-weight:500;
+  font-size:14.5px;letter-spacing:.16em;color:var(--green);
+  margin-bottom:14px;font-weight:700;
 }
 .cta-limited::before,.cta-limited::after{
   content:"";width:26px;height:1px;background:var(--gold);
@@ -163,7 +163,7 @@ p:last-child{margin-bottom:0;}
   45%{left:120%;}
   100%{left:120%;}
 }
-.btn small{display:block;font-size:11px;font-weight:400;letter-spacing:.14em;color:#E9DFC4;margin-bottom:2px;}
+.btn small{display:block;font-size:13px;font-weight:700;letter-spacing:.1em;color:#EFE5C9;margin-bottom:3px;}
 .cta-note{
   margin:16px auto 0;
   max-width:360px;
@@ -296,6 +296,23 @@ p:last-child{margin-bottom:0;}
   box-shadow:0 4px 12px rgba(58,42,30,.22);
 }
 .gift .sec-label{color:#F0E7CB;}
+.gift-precond{
+  text-align:center;
+  margin-bottom:14px;
+}
+.gift-precond span.nw{background:none;border:0;padding:0;}
+.gift-precond > span{
+  display:inline-block;
+  background:rgba(253,251,244,.16);
+  border:1px solid rgba(240,231,203,.62);
+  color:#FDFCF4;
+  font-size:14.5px;
+  font-weight:700;
+  letter-spacing:.09em;
+  line-height:1.7;
+  padding:7px 20px;
+  border-radius:999px;
+}
 .gift .sec-title{color:#FDFCF4;text-shadow:0 1px 6px rgba(47,56,28,.25);}
 .gift-sub{
   color:#F4F1E2;
@@ -496,7 +513,7 @@ footer{
   max-width:none;
   animation:none;
 }
-.sticky-cta-inner .btn small{font-size:10px;margin-bottom:1px;}
+.sticky-cta-inner .btn small{font-size:11.5px;margin-bottom:2px;}
 
 /* 追従CTAぶんの逃げ */
 .wrap{padding-bottom:0;}
@@ -523,11 +540,11 @@ body.has-sticky .wrap{padding-bottom:0;}
   .sec-label{letter-spacing:.2em;}
 
   .btn{font-size:16px;letter-spacing:.05em;padding:18px 34px 19px;}
-  .btn small{font-size:10.5px;letter-spacing:.1em;}
+  .btn small{font-size:12.5px;letter-spacing:.06em;}
   .cta-note{font-size:11.5px;letter-spacing:.02em;}
-  .cta-limited{font-size:12px;letter-spacing:.14em;}
+  .cta-limited{font-size:13.5px;letter-spacing:.12em;}
 
-  .check-list li{font-size:13.5px;padding:14px 14px;gap:10px;}
+  .check-list li{font-size:13px;padding:14px 13px;gap:10px;}
   .worries-close{font-size:14.5px;}
 
   .about-quote{font-size:14px;padding:20px 16px;letter-spacing:0;}
@@ -539,6 +556,7 @@ body.has-sticky .wrap{padding-bottom:0;}
   .program-card p{font-size:13.5px;}
 
   .gift .sec-title{font-size:18px;}
+  .gift-precond > span{font-size:13px;padding:6px 16px;}
   .gift-sub{font-size:13px;}
   .gift-close{font-size:13px;}
   .gift-caution{font-size:11px;}
@@ -552,6 +570,7 @@ body.has-sticky .wrap{padding-bottom:0;}
   .credentials{padding:22px 16px;font-size:12px;}
 
   .cta-final .fv-echo{font-size:15.5px;}
+  .sprig svg{width:134px;}
 }
 
 /* 375px未満の狭い画面では、はみ出し防止のため折り返し禁止を解除 */
@@ -596,7 +615,7 @@ body.has-sticky .wrap{padding-bottom:0;}
     <p class="worries-close">もしひとつでも当てはまったなら、<br><strong>このセミナーはきっとお役に立てます。</strong></p>
   </section>
 
-  <div class="sprig"><svg viewBox="0 0 60 24" fill="none" stroke="#C0995B" stroke-width="1.2" stroke-linecap="round"><path d="M4 18 Q30 6 56 14"/><path d="M18 13 q-2-6 3-8"/><path d="M30 10.5 q-1-6 4-7.5"/><path d="M42 10.5 q0-6 5-6.5"/></svg></div>
+  <div class="sprig"><svg viewBox="0 0 150 30" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g fill="none" stroke="#C0995B" stroke-width="1.05" stroke-linecap="round"><path d="M67 18 C55 18.5 40 16 18 9"/><path d="M83 18 C95 18.5 110 16 132 9"/><path d="M75 11 C75 8.5 75 6.5 74.6 5"/></g><g fill="#87905F"><path d="M15.1 10.7 Q21.7 4.3 30.9 4.3 Q24.3 10.7 15.1 10.7 Z" opacity="0.92"/><path d="M119.1 4.3 Q128.3 4.3 134.9 10.7 Q125.7 10.7 119.1 4.3 Z" opacity="0.92"/><path d="M24.9 17.2 Q33.0 16.6 39.1 21.8 Q31.0 22.4 24.9 17.2 Z" opacity="0.6"/><path d="M110.9 21.8 Q117.0 16.6 125.1 17.2 Q119.0 22.4 110.9 21.8 Z" opacity="0.6"/><path d="M34.3 11.2 Q40.1 6.2 47.7 6.8 Q41.9 11.8 34.3 11.2 Z" opacity="0.84"/><path d="M102.3 6.8 Q109.9 6.2 115.7 11.2 Q108.1 11.8 102.3 6.8 Z" opacity="0.84"/><path d="M44.2 17.2 Q50.6 16.4 55.8 20.4 Q49.4 21.2 44.2 17.2 Z" opacity="0.55"/><path d="M94.2 20.4 Q99.4 16.4 105.8 17.2 Q100.6 21.2 94.2 20.4 Z" opacity="0.55"/><path d="M53.2 11.7 Q57.5 8.4 62.8 9.1 Q58.5 12.4 53.2 11.7 Z" opacity="0.74"/><path d="M87.2 9.1 Q92.5 8.4 96.8 11.7 Q91.5 12.4 87.2 9.1 Z" opacity="0.74"/><path d="M68.4 7.7 Q70.8 4.1 75.2 3.5 Q72.8 7.1 68.4 7.7 Z" opacity=".8"/><path d="M75.2 4.5 Q79.0 5.0 81.2 8.3 Q77.4 7.8 75.2 4.5 Z" opacity=".65"/></g><ellipse cx="75" cy="17.6" rx="4" ry="5.9" fill="#A2583B"/><ellipse cx="73.5" cy="15.6" rx="1.1" ry="2" fill="#D9C08F" opacity=".5" transform="rotate(-16 73.5 15.6)"/><g fill="#B5573C" opacity=".8"><ellipse cx="60" cy="20.5" rx="1.9" ry="2.5"/><ellipse cx="90" cy="20.5" rx="1.9" ry="2.5"/></g></svg></div>
 
   <!-- ===== 受験薬膳とは ===== -->
   <section class="about fx">
@@ -641,15 +660,15 @@ body.has-sticky .wrap{padding-bottom:0;}
     <div class="sec-title-underline"></div>
 
     <div class="program-card">
-      <h3>① <span class="nw">「気合い不足」ではなかった。</span><span class="nw">受験期の不調のサイン</span></h3>
+      <h3>① <span class="nw">「気合い不足」ではなかった。</span><br><span class="nw">受験期の不調のサイン</span></h3>
       <p><span class="nw">朝ごはんが入らない、</span><span class="nw">イライラする、</span><span class="nw">甘いものばかり欲しがる――</span><span class="nw">それは根性不足ではなく、</span><span class="nw">心と体からのサインだということが</span><span class="nw">わかります。</span></p>
     </div>
     <div class="program-card">
-      <h3>② <span class="nw">たった1分でできる「唇チェック」で、</span><span class="nw">今日のわが子の状態がわかる</span></h3>
+      <h3>② <span class="nw">たった1分でできる「唇チェック」で、</span><br><span class="nw">今日のわが子の状態がわかる</span></h3>
       <p><span class="nw">白っぽい・赤みが強い・</span><span class="nw">紫っぽい・乾いている。</span><span class="nw">唇の様子から、</span><span class="nw">その日その子に必要な</span><span class="nw">ごはんの方向性が見える</span><span class="nw">ワークをお伝えします。</span></p>
     </div>
     <div class="program-card">
-      <h3>③ <span class="nw">「今日は何を作ればいいか」が、</span><span class="nw">毎日パッと選べるようになる</span></h3>
+      <h3>③ <span class="nw">「今日は何を作ればいいか」が、</span><br><span class="nw">毎日パッと選べるようになる</span></h3>
       <p><span class="nw">固定レシピを</span><span class="nw">覚えるのではなく、"その日の状態"に</span><span class="nw">合わせて食材を選ぶ力が</span><span class="nw">身につきます。</span><span class="nw">忙しい日でも、</span><span class="nw">いつもの食材で大丈夫です。</span></p>
     </div>
     <div class="program-card">
@@ -657,7 +676,7 @@ body.has-sticky .wrap{padding-bottom:0;}
       <p><span class="nw">受験期に揺れているのは</span><span class="nw">子どもだけではありません。</span><span class="nw">お母さんが整うと、</span><span class="nw">家庭の空気がどう変わるのかが</span><span class="nw">わかります。</span></p>
     </div>
     <div class="program-card">
-      <h3>⑤ <span class="nw">塾前・帰宅後・模試のあと。</span><span class="nw">シーン別の"ちょうどいいごはん"</span></h3>
+      <h3>⑤ <span class="nw">塾前・帰宅後・模試のあと。</span><br><span class="nw">シーン別の"ちょうどいいごはん"</span></h3>
       <p><span class="nw">緊張して食べられない時、</span><span class="nw">疲れて帰ってきた時、</span><span class="nw">結果に落ち込んだ時――</span><span class="nw">それぞれの場面で</span><span class="nw">どう食卓を整えればいいかが</span><span class="nw">わかります。</span></p>
     </div>
   </section>
@@ -666,6 +685,7 @@ body.has-sticky .wrap{padding-bottom:0;}
   <section class="gift fx">
     <div class="gift-ribbon"><span>今だけの特典!</span></div>
     <p class="sec-label">Special Gift</p>
+    <p class="gift-precond"><span>ウェビナー後の<span class="nw">個別相談会ご参加で</span></span></p>
     <h2 class="sec-title">受験期の親子を食卓から支える<br>親子のかんたん薬膳タイプチェック<br>プレゼント</h2>
 
     <div class="gift-img">
@@ -714,7 +734,7 @@ body.has-sticky .wrap{padding-bottom:0;}
     </p>
   </div>
 
-  <div class="sprig"><svg viewBox="0 0 60 24" fill="none" stroke="#C0995B" stroke-width="1.2" stroke-linecap="round"><path d="M4 18 Q30 6 56 14"/><path d="M18 13 q-2-6 3-8"/><path d="M30 10.5 q-1-6 4-7.5"/><path d="M42 10.5 q0-6 5-6.5"/></svg></div>
+  <div class="sprig"><svg viewBox="0 0 150 30" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g fill="none" stroke="#C0995B" stroke-width="1.05" stroke-linecap="round"><path d="M67 18 C55 18.5 40 16 18 9"/><path d="M83 18 C95 18.5 110 16 132 9"/><path d="M75 11 C75 8.5 75 6.5 74.6 5"/></g><g fill="#87905F"><path d="M15.1 10.7 Q21.7 4.3 30.9 4.3 Q24.3 10.7 15.1 10.7 Z" opacity="0.92"/><path d="M119.1 4.3 Q128.3 4.3 134.9 10.7 Q125.7 10.7 119.1 4.3 Z" opacity="0.92"/><path d="M24.9 17.2 Q33.0 16.6 39.1 21.8 Q31.0 22.4 24.9 17.2 Z" opacity="0.6"/><path d="M110.9 21.8 Q117.0 16.6 125.1 17.2 Q119.0 22.4 110.9 21.8 Z" opacity="0.6"/><path d="M34.3 11.2 Q40.1 6.2 47.7 6.8 Q41.9 11.8 34.3 11.2 Z" opacity="0.84"/><path d="M102.3 6.8 Q109.9 6.2 115.7 11.2 Q108.1 11.8 102.3 6.8 Z" opacity="0.84"/><path d="M44.2 17.2 Q50.6 16.4 55.8 20.4 Q49.4 21.2 44.2 17.2 Z" opacity="0.55"/><path d="M94.2 20.4 Q99.4 16.4 105.8 17.2 Q100.6 21.2 94.2 20.4 Z" opacity="0.55"/><path d="M53.2 11.7 Q57.5 8.4 62.8 9.1 Q58.5 12.4 53.2 11.7 Z" opacity="0.74"/><path d="M87.2 9.1 Q92.5 8.4 96.8 11.7 Q91.5 12.4 87.2 9.1 Z" opacity="0.74"/><path d="M68.4 7.7 Q70.8 4.1 75.2 3.5 Q72.8 7.1 68.4 7.7 Z" opacity=".8"/><path d="M75.2 4.5 Q79.0 5.0 81.2 8.3 Q77.4 7.8 75.2 4.5 Z" opacity=".65"/></g><ellipse cx="75" cy="17.6" rx="4" ry="5.9" fill="#A2583B"/><ellipse cx="73.5" cy="15.6" rx="1.1" ry="2" fill="#D9C08F" opacity=".5" transform="rotate(-16 73.5 15.6)"/><g fill="#B5573C" opacity=".8"><ellipse cx="60" cy="20.5" rx="1.9" ry="2.5"/><ellipse cx="90" cy="20.5" rx="1.9" ry="2.5"/></g></svg></div>
 
   <!-- ===== 特別な食材も不要 ===== -->
   <section class="easy fx">
