@@ -3,6 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5G33BFV');</script>
+<!-- End Google Tag Manager -->
+
 <title>受験薬膳 無料ウェビナー｜勉強は代われない。でも、毎日のごはんで支えられる。</title>
 <meta name="description" content="受験期の子どもに、何を食べさせたらいいか迷うお母さんへ。子供の“今の状態”に合わせて整える食事「受験薬膳」の無料ウェビナー、期間限定公開。個別相談会ご参加で「今日のごはん見立てチャート」をプレゼント。">
 <meta property="og:title" content="受験薬膳 無料ウェビナー ―期間限定公開―">
@@ -595,6 +604,11 @@ body.has-sticky .wrap{padding-bottom:0;}
 </style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5G33BFV"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
 
 <div class="wrap">
 
@@ -604,7 +618,7 @@ body.has-sticky .wrap{padding-bottom:0;}
   </header>
 
   <!-- ===== CTA 1 ===== -->
-  <div class="cta" id="firstCta">
+  <div class="cta" id="firstCta" data-cta="fv">
     <p class="cta-limited">期間限定公開</p>
     <a class="btn" href="#" target="_blank" rel="noopener">
       <small>受験薬膳</small>
@@ -657,7 +671,7 @@ body.has-sticky .wrap{padding-bottom:0;}
   </section>
 
   <!-- ===== CTA 2 ===== -->
-  <div class="cta cta--tinted">
+  <div class="cta cta--tinted" data-cta="book">
     <p class="cta-limited">期間限定公開</p>
     <a class="btn" href="#" target="_blank" rel="noopener">
       <small>受験薬膳</small>
@@ -738,7 +752,7 @@ body.has-sticky .wrap{padding-bottom:0;}
   </section>
 
   <!-- ===== CTA 3 ===== -->
-  <div class="cta">
+  <div class="cta" data-cta="gift">
     <p class="cta-limited">期間限定公開</p>
     <a class="btn" href="#" target="_blank" rel="noopener">
       <small>受験薬膳</small>
@@ -835,7 +849,7 @@ body.has-sticky .wrap{padding-bottom:0;}
   </section>
 
   <!-- ===== 最終CTA ===== -->
-  <div class="cta cta-final fx">
+  <div class="cta cta-final fx" data-cta="final">
     <p class="fv-echo">勉強は代われない。<br>でも、毎日の<span class="gold nw">ごはんで支えられる。</span></p>
     <p class="cta-limited">期間限定公開</p>
     <a class="btn" href="#" target="_blank" rel="noopener">
@@ -853,7 +867,7 @@ body.has-sticky .wrap{padding-bottom:0;}
 
 <!-- ===== 追従CTA ===== -->
 <div class="sticky-cta" id="stickyCta">
-  <div class="sticky-cta-inner">
+  <div class="sticky-cta-inner" data-cta="sticky">
     <a class="btn" href="#" target="_blank" rel="noopener">
       <small>―期間限定公開―</small>
       受験薬膳 無料ウェビナーを見てみる
@@ -872,6 +886,18 @@ var CTA_URL = "#";
   document.querySelectorAll('a.btn').forEach(function(a){
     a.href = CTA_URL;
     if (CTA_URL === "#") a.removeAttribute('target'); // URL未設定時は空タブを開かない
+  });
+
+  // CTAクリックを dataLayer へ（GTM側でトリガーを作れば計測できます）
+  document.querySelectorAll('a.btn').forEach(function(a){
+    var wrap = a.closest('[data-cta]');
+    a.addEventListener('click', function(){
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'cta_click',
+        cta_position: wrap ? wrap.getAttribute('data-cta') : 'unknown'
+      });
+    });
   });
 
   var sticky = document.getElementById('stickyCta');
